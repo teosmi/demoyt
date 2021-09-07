@@ -1,0 +1,58 @@
+{% extends  "demo/base.html" %}
+{% block content %}
+
+<div class="table-responsive-sm p-4">
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th scope="col">product_id</th>
+                <th scope="col">indication_id</th>
+                <th scope="col">number</th>
+                <th scope="col">name</th>
+                <th scope="col">region</th>
+                <th scope="col">type</th>
+                <th scope="col">created_at</th>
+                <th scope="col">status</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in application_list %}
+
+            <tr class="table-info">
+                <td>{{application.product_id}}</td>
+                <td>{{application.indication_id}}</td>
+                <td><a href = "{% url 'detail_application' application.id %}"></a>{{application.number}}</a></td>
+                <td>{{application.name}}</td>
+                <td>{{application.region}}</td>
+                <td>{{application.type}}</td>
+                <td>{{application.created_at}}</td >
+                <td>{{application.status}}</td>
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+    </table>        
+
+    <div class="pagination">
+        {% if application_list.has_previous %}
+        <a href="{% url	'application' %}?page={{ application_list.previous_page_number}}">Précédente</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ application_list.number }} sur {{ application_list.paginator.num_pages }}
+        </span>
+
+        {% if application_list.has_next %}
+        <a href="{% url 'application' %}?page={{ application_list.next_page_number}}">Suivante</a>
+        {% endif %}
+    </div>
+    <div class="text-right">
+        <a href= "{% url 'create_application' %}" class="btn btn-info">Ajouter une Application</a>
+    </div>|
+
+</div>
+
+
+
+{% endblock %}

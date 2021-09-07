@@ -1,0 +1,49 @@
+{% extends  "demo/base.html" %}
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        Application detaits
+        <a href= "{% url 'update_application' application.id %}" class="close">
+            <i class="fas fa-pen"></i>
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <strong> product_id </strong> : {{application.product_id}} <br>
+            </div>
+            <div class="col">
+                <strong> indication_id </strong> : {{application.indication_id}} <br>
+            </div>
+            </div>
+        <div class="row">
+            <div class="col">
+                <strong> number </strong> : {{application.number}} <br>
+            </div>
+            <div class="col">
+                <strong> name </strong> : {{application.name}} <br>
+            </div>
+            </div>
+        <div class="row">
+            <div class="col">
+                <strong> region </strong> : {{application.region}} <br>
+            </div>
+            <div class="col">
+                <strong> type </strong> : {{application.type}} <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <strong> creat_at </strong> : {{application.creat_at}} <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <strong> status </strong> : {{application.status}} <br>
+            </div>
+        </div>
+    </div>
+</div>
+   
+{% endblock %}

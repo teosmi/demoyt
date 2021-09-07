@@ -1,0 +1,48 @@
+{% extends  "demo/base.html" %}
+{% block content %}
+
+<div class="table-responsive-sm p-4">
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                
+                <th scope="col">name</th>
+                <th scope="col">status</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for indication in indication_list %}
+
+            <tr class="table-info">
+                
+                <td><a href = "{% url 'detail_indication' indication.id %}">{{indication.name}}</a></td>
+                <td>{{indication.status}}</td>
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+    </table>        
+
+    <div class="pagination">
+        {% if indication_list.has_previous %}
+        <a href="{% url	'indication' %}?page={{ indication_list.previous_page_number}}">Précédente</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ indication_list.number }} sur {{ indication_list.paginator.num_pages }}
+        </span>
+
+        {% if indication_list.has_next %}
+        <a href="{% url 'indication' %}?page={{ indication_list.next_page_number}}">Suivante</a>
+        {% endif %}
+    </div>
+    <div class="text-right">
+        <a href= "{% url 'create_indication' %}" class="btn btn-info">Ajouter une Indication</a>
+    </div>|
+
+</div>
+
+
+
+{% endblock %}
