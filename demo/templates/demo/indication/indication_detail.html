@@ -1,0 +1,24 @@
+{% extends  "demo/base.html" %}
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        Indication detaits
+        <a href= "{% url 'update_indication' indication.id %}" class="close">
+            <i class="fas fa-pen"></i>
+        </a>
+    </div>
+    <div class="card-body">
+        
+        <div class="row">
+            <div class="col">
+                <strong> number </strong> : {{indication.number}} <br>
+            </div>
+            <div class="col">
+                <strong> status </strong> : {{indication.status}} <br>
+            </div>
+        </div>
+    </div>
+</div>
+   
+{% endblock %}
